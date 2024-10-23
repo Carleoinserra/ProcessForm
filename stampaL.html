@@ -3,13 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
+<div class="container">
+<table>
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Cognome</th>
+              <th>Immagine</th>
+          </tr>
+        </thead>
 
-<ul>
-<li th:each = "item:${lista}"><span th:text = "${item.nome}"></span>
-<span th:text = "${item.cognome}"></span>
+        <tbody>
+          <tr th:each = "item:${lista}">
+            <td th:text = "${item.nome}"></td>
+            <td th:text = "${item.cognome}"></td>
+            <td><img th:src = "${item.url}"></td>
+          </tr>
+         
+        </tbody>
+      </table>
+            
 
-</ul>
+</div>
 </body>
 </html>

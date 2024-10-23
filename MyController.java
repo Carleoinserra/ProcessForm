@@ -19,7 +19,7 @@ public class MyController {
 	
 	
 	// creiamo un arrayList di persona
-	ArrayList <persona> lista = new ArrayList<>();
+	ArrayList <person> lista = new ArrayList<>();
 	
 	/*
 	 * L'applicazione alla chiamata get verso localhost:8080
@@ -95,12 +95,15 @@ public class MyController {
 	 */
 	@PostMapping("/submit")
 	public String getDati(@RequestParam("nome") String nome, 
-			@RequestParam("cognome") String cognome, Model m1) {
+			@RequestParam("cognome") String cognome,
+			@RequestParam("url") String url,
+			
+			Model m1) {
 		
 		//System.out.println(nome);
 		//System.out.println(cognome);
 		
-		persona p1 = new persona(nome, cognome);
+		person p1 = new person(nome, cognome, url);
 		
 		lista.add(p1);
 		
