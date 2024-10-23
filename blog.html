@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Blog page</h1>
+<!-- In questo file andiamo a stampare una lista che abbiamo passato dal controller
+andiamo a iterare con thymleaf la lista di nome "lista"
+per ogni elemento all'interno della lista creami un elemento h3 e vammi a stampare il valore dell'elemento item -->
+<h3 th:each = "item: ${lista}"><span th:text = "${item}"></span></li>
+</body>
+</html>
