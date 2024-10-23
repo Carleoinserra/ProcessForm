@@ -121,6 +121,47 @@ public class MyController {
 		
 		return ("stampaL");
 	}
+	/*
+	 * 
+	 * Siamo andati a processare il form che abbiamo creato ne stampaL
+	 * da quel form selezioniamo tutti i nomi dei dipedenti che ci vengono trasferiti nell'arraylist nomi
+	 * selezioniamo il numero dei dipedenti che sono stati scelti che ci vengono trasferiti nell'array numeri
+	 */
+	@PostMapping("/process")
+	public String getDipendenti(@RequestParam("nome") ArrayList<String> nomi, 
+			@RequestParam("num") ArrayList<Integer> numeri,
+			//@RequestParam("url") String url,
+			
+			Model m1) {
+		
+		//System.out.println(nome);
+		//System.out.println(cognome);
+		
+	
+/*
+ * Andiamo a iterare l'array nomi che ha lo stesso indice di numeri
+ * se il numero è diverso da zero (cioè se sono stati selezionati più dipendenti)
+ * Stampiamo il nome del dipedente selezionato
+ * il numero di dipedenti ad esso associato
+ */
+for (int i = 0; i < nomi.size(); i++) {
+	
+	if (numeri.get(i) != 0) {
+		
+		System.out.println("Hai selezionato: " + nomi.get(i));
+		System.out.println(numeri.get(i) + " volte");
+		
+	}
+}
+		
+		
+		
+		
+		
+		return("stampaL");
+		
+		
+	}
 	
 	
 	

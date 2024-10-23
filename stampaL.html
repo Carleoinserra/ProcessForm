@@ -8,27 +8,93 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<style>
+.card img {
+
+width: 200px;
+
+height: 100px;
+}
+
+
+</style>
+
+
 </head>
 <body>
+<!--  Per questo esercizio abbiamo usato il framework di css materialize
+abbiamo importato i link per utilizzarli
+il primo container contiene tutti gli elementi della pagina e li fa visualizzare centrati-->
 <div class="container">
+
+<!-- Creiamo una tabella che a partire dai dati che abbiamo passato dal controller
+per ogni dipendente presenta nella crea una una riga che contiene
+una cella per il nome, una cella per il cognome, e una cella per l'immagine -->
+
+<!-- Abbiamo creato un form che risponde all rotta /process con il metodo POST  -->
+ <form action = "/process" method = "POST">
 <table>
         <thead>
           <tr>
               <th>Name</th>
               <th>Cognome</th>
               <th>Immagine</th>
+              <th>Seleziona</th>
           </tr>
         </thead>
 
         <tbody>
+       
           <tr th:each = "item:${lista}">
             <td th:text = "${item.nome}"></td>
             <td th:text = "${item.cognome}"></td>
             <td><img th:src = "${item.url}"></td>
+            <!-- 
+            Aggiungiamo un input di tipo numerico che ritorna il numero di dipedenti selezionati (il valore è impostato
+            di default a 0)
+            un input di tipo hidden (nascosto) con il nome del dipendente
+            
+             -->
+            <td>
+            
+            <input type = "number" name = "num" value = "0">
+            <input type = "hidden" name = "nome" th:value = "${item.nome}" >
+            
+            
+            </td>
           </tr>
+         
          
         </tbody>
       </table>
+      <!-- 
+      Fuori della tabella creiamo un bottone di tipo submit
+      che farà partire il form
+      
+      
+       -->
+       <input type = "submit" value = "invia">
+      </form>
+      <hr>
+      <h1>Card con i dipendenti</h1>
+      <!-- Creato per ogni elemento della lista una card
+      questa card contiene un'immagine il nome del dipendente
+      il cognome del dipedente -->
+      <div class="row">
+      <div th:each = "item:${lista}" class="card col s3">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" th:src = "${item.url}">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4" th:text = "${item.cognome}"><i class="material-icons right">more_vert</i></span>
+      
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4" th:text = "${item.cognome}" ><i class="material-icons right">close</i></span>
+      <p th:text = "${item.nome}"></p>
+    </div>
+  </div>
+      </div>      
             
 
 </div>
