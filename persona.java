@@ -9,6 +9,7 @@ public class persona {
 	
 	String nome;
 	String cognome;
+	String url;
 	public String getNome() {
 		return nome;
 	}
@@ -25,10 +26,11 @@ public class persona {
 	public String toString() {
 		return "persona [nome=" + nome + ", cognome=" + cognome + "]";
 	}
-	public persona(String nome, String cognome) {
+	public persona(String nome, String cognome, String url) {
 		super();
 		this.nome = nome;
 		this.cognome = cognome;
+		this.url = url;
 	}
 	
 

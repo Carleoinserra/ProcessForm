@@ -21,6 +21,9 @@ public class MyController {
 	// creiamo un arrayList di persona
 	ArrayList <person> lista = new ArrayList<>();
 	
+	
+	
+	
 	/*
 	 * L'applicazione alla chiamata get verso localhost:8080
 	 * risponderà con il file index
@@ -28,9 +31,13 @@ public class MyController {
 	@GetMapping("/")
 	public String getIndex(Model m1) {
 		
+		lista.removeAll(lista);
+		
+		
 		// creiamo una stringa
 		String nome = "Carlo";
-		
+		lista.add(new person("Mario", "Bianchi", "dip1.jpeg"));
+		lista.add(new person("Franco", "Gialli", "dip2.jpeg"));
 		
 		/*
 		 * La passiamo al model con la dicitura nome
