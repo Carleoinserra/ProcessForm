@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class MyController {
 	
+	
+	// creiamo un arrayList di persona
+	ArrayList <persona> lista = new ArrayList<>();
+	
 	/*
 	 * L'applicazione alla chiamata get verso localhost:8080
 	 * risponderà con il file index
@@ -98,11 +102,21 @@ public class MyController {
 		
 		persona p1 = new persona(nome, cognome);
 		
+		lista.add(p1);
+		
 		m1.addAttribute("persona", p1);
 		
 		return("stampa");
 		
 		
+	}
+	
+	@GetMapping("/lista")
+	public String getLista(Model m1) {
+		
+		m1.addAttribute("lista", lista);
+		
+		return ("stampaL");
 	}
 	
 	
