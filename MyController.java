@@ -36,8 +36,9 @@ public class MyController {
 		
 		// creiamo una stringa
 		String nome = "Carlo";
-		lista.add(new person("Mario", "Bianchi", "dip1.jpeg"));
-		lista.add(new person("Franco", "Gialli", "dip2.jpeg"));
+		lista.add(new person("Mario", "Bianchi", "dip1.jpeg", 1100));
+		lista.add(new person("Franco", "Gialli", "dip2.jpeg", 2050));
+		lista.add(new person("Antonella", "Viola", "dip2.jpeg", 3000));
 		
 		/*
 		 * La passiamo al model con la dicitura nome
@@ -110,7 +111,7 @@ public class MyController {
 		//System.out.println(nome);
 		//System.out.println(cognome);
 		
-		person p1 = new person(nome, cognome, url);
+		person p1 = new person(nome, cognome, url, 2000);
 		
 		lista.add(p1);
 		
@@ -126,8 +127,16 @@ public class MyController {
 		
 		m1.addAttribute("lista", lista);
 		
+		// azzerriamo listaS
+		
+				listaS.removeAll(listaS);
+		
 		return ("stampaL");
+		
+		
 	}
+	
+	ArrayList <personSelect> listaS = new ArrayList <>();
 	/*
 	 * 
 	 * Siamo andati a processare il form che abbiamo creato ne stampaL
@@ -143,31 +152,53 @@ public class MyController {
 		
 		//System.out.println(nome);
 		//System.out.println(cognome);
-		
+	
 	
 /*
  * Andiamo a iterare l'array nomi che ha lo stesso indice di numeri
  * se il numero è diverso da zero (cioè se sono stati selezionati più dipendenti)
- * Stampiamo il nome del dipedente selezionato
- * il numero di dipedenti ad esso associato
+ * Istanziamo il nuovo ArrayList di personSelect con un nuovo oggetto che ha come caratteristiche
+ * il cognome, la url, lo stipendio, e il numero di volte che è stato selezionato
+ * istanziamo una variabile somma con il valore dello stipendio per il numero di volte che è statp selezionato
+ * 
  */
+		
+		
+int somma = 0;
 for (int i = 0; i < nomi.size(); i++) {
-	
-	if (numeri.get(i) != 0) {
+	// solo se l'utente ha selezionato quel dipendente un numero di volte maggiore di 0
+	if (numeri.get(i) > 0) {
 		
 		System.out.println("Hai selezionato: " + nomi.get(i));
 		System.out.println(numeri.get(i) + " volte");
 		
+		System.out.println("Il dipendente " + lista.get(i).nome
+				+ " ha uno stipendio di "  + lista.get(i).stipendio);
+		
+		somma += numeri.get(i) * lista.get(i).stipendio;
+		
+		listaS.add(new personSelect(lista.get(i).cognome, lista.get(i).url, lista.get(i).stipendio, numeri.get(i)));
+		
 	}
 }
+
+System.out.println("La somma degli stipendi è: " + somma + " euro");
+		
+		m1.addAttribute("somma", somma);
+		m1.addAttribute("lista", listaS);
 		
 		
 		
+		return("recap");
 		
 		
-		return("stampaL");
+	}
+	
+	@GetMapping("/getLista")
+	@ResponseBody
+	public ArrayList<person> getLista(){
 		
-		
+		return lista;
 	}
 	
 	

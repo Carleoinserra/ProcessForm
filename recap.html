@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+<div class = "container">
+
+<table>
+        <thead>
+          <tr>
+              
+              <th>Cognome</th>
+              
+              <th>Stipendio</th>
+              <th>Immagine</th>
+               <th>Quantità</th>
+          </tr>
+        </thead>
+
+        <tbody>
+       
+          <tr th:each = "item:${lista}">
+            <td th:text = "${item.cognome}"></td>
+            <td th:text = "${item.stipendio}"></td>
+            <td><img th:src = "${item.url}"></td>
+            <td th:text = "${item.qnt}"></td>
+          
+          </tr>
+         
+         
+        </tbody>
+      </table>
+
+<h3>La somma totale da pagare è: <span th:text = "${somma}"></span></h3>
+
+
+
+</div>
+</body>
+</html>
