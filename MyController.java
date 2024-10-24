@@ -146,7 +146,7 @@ public class MyController {
 	@PostMapping("/process")
 	public String getDipendenti(@RequestParam("nome") ArrayList<String> nomi, 
 			@RequestParam("num") ArrayList<Integer> numeri,
-			//@RequestParam("url") String url,
+			@RequestParam("rata") String rata,
 			
 			Model m1) {
 		
@@ -183,11 +183,30 @@ for (int i = 0; i < nomi.size(); i++) {
 }
 // stampiamo la somma
 System.out.println("La somma degli stipendi è: " + somma + " euro");
+
+int rataP = Integer.parseInt(rata);
+
+System.out.println(rataP);
+
+int costoR = 0;
+boolean ok = false;
+
+if (rataP != 1) {
+	
+	costoR = somma / rataP;
+	ok = true;
+}
+
+
+
+
 		/*
 		 * Nel model passiamo sia listaS che la somma
 		 */
 		m1.addAttribute("somma", somma);
 		m1.addAttribute("lista", listaS);
+		m1.addAttribute("rata", costoR);
+		m1.addAttribute("ok", ok);
 		
 		
 		

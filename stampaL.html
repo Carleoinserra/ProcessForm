@@ -18,7 +18,51 @@ height: 100px;
 
 
 </style>
+<script>
 
+
+window.onload = gestoreLoad;
+
+function gestoreLoad(){
+	
+	var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+	// la funzione location reload ci permette di avere un refresh automatico della pagina
+	// anche quando l'utente utilizza le frecce del browser
+	window.addEventListener('pageshow', function(event) {
+	            if (event.persisted) {
+	                location.reload();
+	            }
+	        });
+	
+	
+	async function getData() {
+	    try {
+	        // Effettua una richiesta fetch e attende la risposta
+	        const response = await fetch('/getLista');
+
+	        // Verifica se la risposta è andata a buon fine
+	        if (!response.ok) {
+	            throw new Error('Network response was not ok');
+	        }
+
+	        // Converte la risposta in formato JSON e la attende
+	        const data = await response.json();
+
+	        // Utilizza i dati ottenuti
+	        console.log(data);
+	    } catch (error) {
+	        // Gestisce eventuali errori
+	        console.error('There was a problem:', error);
+	    }
+	}
+
+	getData(); // Chiama la funzione asincrona
+	   
+}
+
+
+</script>
 
 </head>
 <body>
@@ -73,6 +117,14 @@ una cella per il nome, una cella per il cognome, e una cella per l'immagine -->
       
       
        -->
+       <h3>Rateizza il tuo pagamento</h3>
+       <select name="rata" id="rata">
+  <option value="1">Pagamento unico</option>
+  <option value="6">6 MESI</option>
+  <option value="12">12 MESI</option>
+  <option value="18">18 MESI</option>
+</select>
+
        <input type = "submit" value = "invia">
       </form>
       <hr>
