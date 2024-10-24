@@ -174,16 +174,18 @@ for (int i = 0; i < nomi.size(); i++) {
 		
 		System.out.println("Il dipendente " + lista.get(i).nome
 				+ " ha uno stipendio di "  + lista.get(i).stipendio);
-		
+		// la somma viene calcolata moltiplicando lo stipendio del dipendente selezionato con la quantità
 		somma += numeri.get(i) * lista.get(i).stipendio;
-		
+		// creiamo una nuova personSelect con i dati e la aggiungiamo a listaS
 		listaS.add(new personSelect(lista.get(i).cognome, lista.get(i).url, lista.get(i).stipendio, numeri.get(i)));
 		
 	}
 }
-
+// stampiamo la somma
 System.out.println("La somma degli stipendi è: " + somma + " euro");
-		
+		/*
+		 * Nel model passiamo sia listaS che la somma
+		 */
 		m1.addAttribute("somma", somma);
 		m1.addAttribute("lista", listaS);
 		

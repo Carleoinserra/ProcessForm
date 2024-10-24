@@ -10,6 +10,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
+<!--  nel template recap.html abbiamo importato i link di materialize per ottenere le sue graficje
+il div container contiene tutti gli altri elementi e serve per centrare gli elementi nella pagina -->
 <div class = "container">
 
 <table>
@@ -25,7 +27,8 @@
         </thead>
 
         <tbody>
-       
+       <!-- al template abbiamo passato una lista di tipo personSelect
+       che contiene tutti i dipendenti sezionati dall'utente e in quale quantità -->
           <tr th:each = "item:${lista}">
             <td th:text = "${item.cognome}"></td>
             <td th:text = "${item.stipendio}"></td>
@@ -37,7 +40,7 @@
          
         </tbody>
       </table>
-
+<!-- Abbiamo passato anche la somma totale degli stipendi -->
 <h3>La somma totale da pagare è: <span th:text = "${somma}"></span></h3>
 
 
